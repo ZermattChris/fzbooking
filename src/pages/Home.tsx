@@ -1,16 +1,33 @@
 import { IonFab, IonFabButton, IonIcon, IonGrid, IonRow, IonCol, IonContent, IonHeader, IonFooter, IonPage, IonTitle, IonToolbar, IonButtons, IonButton } from '@ionic/react';
-import React, {useRef} from 'react';
-import { add, settings, share, arrowUpCircleSharp, arrowUpOutline, person, arrowForwardCircle, arrowBackCircle, arrowUpCircle, logoVimeo, logoFacebook, logoInstagram, logoTwitter } from 'ionicons/icons';
+import React, { useRef, useState } from 'react';
+import { arrowUpOutline } from 'ionicons/icons';
 
 import FormSlider from '../components/FormSlider';
 import './Home.css';
 
 const Home: React.FC = (props) => {
 
+  // Declare a new state variable
+  const [isAtTop, setIsAtTop] = useState(true);
+
   const contentRef = useRef(null);
   const scrollToTop = () => {
       // @ts-ignore
       contentRef.current.scrollToTop();
+  };
+
+  //let isAtTop = true; // true if the contents have not been scrolled.
+  const enableScrollTopBtn = (e:any) => {
+    // @ts-ignore
+    const atTop = e.detail.scrollTop;
+    if (atTop > 0) {
+      setIsAtTop(false);
+      //console.log('enable button!');
+    } else {
+      setIsAtTop(true);
+      //console.log('DISABLE button!');
+    }
+    // console.log(contentRef.current.pageYOffset);
   };
 
   return (
@@ -22,7 +39,7 @@ const Home: React.FC = (props) => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent scrollEvents={true} ref={contentRef}>
+      <IonContent id={"scrollingContents"} scrollEvents={true} ref={contentRef}  onIonScroll={enableScrollTopBtn}>
         <IonGrid class="ion-no-padding">
           <IonRow>
             <IonCol size="2" className="maroon ion-hide-md-down">
@@ -45,13 +62,13 @@ const Home: React.FC = (props) => {
 
       <IonFooter className="ion-no-border">
         <IonToolbar>
-          <div id="leftBtnSpacer" className="footer-spacer ion-float-left  ion-hide-sm-down"></div>
+          <div id={"leftBtnSpacer"} className="footer-spacer ion-float-left  ion-hide-sm-down"></div>
           <IonButtons className="ion-float-left">
             <IonButton>
               Back
             </IonButton>
           </IonButtons>
-          <div id="rightBtnSpacer"  className="footer-spacer ion-float-right ion-hide-sm-down"></div>
+          <div id={"rightBtnSpacer"} className="footer-spacer ion-float-right ion-hide-sm-down"></div>
           <IonButtons className="ion-float-right">
             <IonButton>
               Continue
@@ -61,7 +78,7 @@ const Home: React.FC = (props) => {
       </IonFooter>
 
       <IonFab vertical="bottom" horizontal="center" slot="fixed">
-          <IonFabButton className="tweak-to-top-btn" title="Scroll to Top..." size="small"  onClick={()=>scrollToTop()}> 
+          <IonFabButton disabled={isAtTop} className="tweak-to-top-btn" title="Scroll to Top..." size="small"  onClick={()=>scrollToTop()}> 
             <IonIcon icon={arrowUpOutline}/>
           </IonFabButton>
       </IonFab>

@@ -1,4 +1,4 @@
-import { IonGrid, IonRow, IonCol} from '@ionic/react';
+// import { IonGrid, IonRow, IonCol} from '@ionic/react';
 import React from 'react';
 import './FormSlider.css';
 
