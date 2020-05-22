@@ -6,7 +6,7 @@ interface ContainerProps { }
 
 const FormSlider: React.FC<ContainerProps> = () => {
   return (
-    <div id="main-contents" className="big-vertical-box">content goes here...</div>
+    <div id="main-contents" className="big-vertical-box">content goes here...<br/><br/><br/>Scroll this down to activate the "Scroll to Top" button below...</div>
   );
 };
 
