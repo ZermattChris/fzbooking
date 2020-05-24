@@ -34,8 +34,10 @@ const Home: React.FC = (props) => {
     <IonPage>
 
       <IonHeader className="ion-no-border">
-        <IonToolbar color="primary">
-          <IonTitle>Header: FLYZermatt - Book your flight (FZ Logo)</IonTitle>
+        <IonToolbar color="white">
+          <IonTitle class="ion-text-center">
+            <img height="80" alt="FLYZermatt Logo" src="./assets/logos/fzlogo-forlight.svg" />
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
 
@@ -43,7 +45,7 @@ const Home: React.FC = (props) => {
         <IonGrid class="ion-no-padding">
           <IonRow>
             <IonCol size="2" className="maroon ion-hide-md-down">
-              left
+              {/* Left-side spacer column, with no content */}
            </IonCol>
             <IonCol size-md="8" size="12">
 
@@ -54,7 +56,7 @@ const Home: React.FC = (props) => {
 
             </IonCol>
             <IonCol size="2" className="maroon ion-hide-md-down">
-              right
+              {/* Right-side spacer column, with no content */}
             </IonCol>
           </IonRow>
         </IonGrid>
@@ -64,13 +66,13 @@ const Home: React.FC = (props) => {
         <IonToolbar>
           <div id={"leftBtnSpacer"} className="footer-spacer ion-float-left  ion-hide-sm-down"></div>
           <IonButtons className="ion-float-left">
-            <IonButton>
+            <IonButton disabled> 
               Back
             </IonButton>
           </IonButtons>
           <div id={"rightBtnSpacer"} className="footer-spacer ion-float-right ion-hide-sm-down"></div>
           <IonButtons className="ion-float-right">
-            <IonButton>
+            <IonButton fill="solid" color="primary" disabled>
               Continue
             </IonButton>
           </IonButtons>
