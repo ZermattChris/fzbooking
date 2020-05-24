@@ -25,23 +25,32 @@
 
 
 .big-vertical-box {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+  align-items: stretch;
+  
+  overflow: hidden;
+  
   min-height: 1200px;;
-  /* background-color: rgb(228, 228, 228); */
+  background-color: rgb(255, 174, 53);
   margin: 0 !important;
   padding: 0 !important;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 
-.maroon {
-  background-color: white;
-  color: silver;
+/* This f**ker was causing the Slide contents to be 'vertically' centered! Arrrgh! */
+.swiper-zoom-container {
+  -webkit-align-items: start;
+  align-items: start;
 }
 
-ion-slide {
-  background-color: rgb(255, 255, 182);
+ion-slides {
+  background-color: rgb(255, 117, 237);
 }
 ion-slide {
-  margin-top: 20px;
+  background-color: rgb(188, 255, 182);
 }
 
 .step-icon {
